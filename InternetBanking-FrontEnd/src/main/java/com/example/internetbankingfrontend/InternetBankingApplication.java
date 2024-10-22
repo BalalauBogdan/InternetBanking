@@ -12,7 +12,7 @@ public class InternetBankingApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("homepage-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Login or register");
+        stage.setTitle("Main Page");
         stage.setScene(scene);
         stage.show();
     }

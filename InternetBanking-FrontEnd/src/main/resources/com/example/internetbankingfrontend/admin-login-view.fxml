@@ -8,10 +8,11 @@
 
 <?import javafx.geometry.Insets?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.internetbankingfrontend.controller.InternetBankingController">
+      fx:controller="com.example.internetbankingfrontend.controller.admin.AdminLoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Button text="Login or register" onAction="#OpenLoginOrRegister"/>
-    <Button text="Admin" onAction="#OpenAdmin"/>
+    <TextField fx:id="adminUsername" promptText="Enter Username"/>
+    <TextField fx:id="adminPassword" promptText="Enter Password"/>
+    <Button text="Login" onAction="#loginAdmin"/>
 </VBox>

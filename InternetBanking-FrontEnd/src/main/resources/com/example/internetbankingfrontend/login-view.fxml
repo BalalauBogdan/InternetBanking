@@ -16,4 +16,5 @@
     <TextField fx:id="username" promptText="Enter Username"/>
     <TextField fx:id="password" promptText="Enter Password"/>
     <Button text="Login" onAction="#Login"/>
+    <Button text="register" onAction="#Register"/>
 </VBox>

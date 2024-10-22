@@ -11,4 +11,6 @@ module com.example.internetbankingfrontend {
     opens com.example.internetbankingfrontend.controller to javafx.fxml;
     exports com.example.internetbankingfrontend.controller.login;
     opens com.example.internetbankingfrontend.controller.login to javafx.fxml;
+    opens com.example.internetbankingfrontend.controller.admin to javafx.fxml;
+    exports com.example.internetbankingfrontend.controller.admin;
 }
