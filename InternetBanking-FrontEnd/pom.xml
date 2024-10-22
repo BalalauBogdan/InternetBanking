@@ -65,7 +65,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.internetbankingfrontend/com.example.internetbankingfrontend.HelloApplication
+                                com.example.internetbankingfrontend/com.example.internetbankingfrontend.InternetBankingApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
