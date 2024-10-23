@@ -1,6 +1,7 @@
 package finalproject.internetbankingbackend.controller;
 
 import finalproject.internetbankingbackend.dto.CustomerDTO;
+import finalproject.internetbankingbackend.dto.LoginDTO;
 import finalproject.internetbankingbackend.entity.Customer;
 import finalproject.internetbankingbackend.service.CustomerService;
 import finalproject.internetbankingbackend.utils.ApiResponse;
@@ -54,7 +55,8 @@ public class CustomerController {
     @PostMapping("/")
     public ResponseEntity<ApiResponse> createCustomer(@RequestBody CustomerDTO customerDTO) {
         Customer customer = new Customer();
-        customer.setIban(customerDTO.getIban());
+        customer.setIban(this.customerService.generateIBAN());
+        customer.setRole("USER");
         customer.setUsername(customerDTO.getUsername());
         customer.setPassword(customerDTO.getPassword());
         customer.setFirstname(customerDTO.getFirstname());
@@ -67,5 +69,27 @@ public class CustomerController {
                 .data(this.customerService.createCustomer(customer))
                 .build();
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse> loginCustomer(@RequestBody LoginDTO loginDTO) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(loginDTO.getUsername());
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            if (customer.getPassword().equals(loginDTO.getPassword())) {
+                ApiResponse response = new ApiResponse.Builder()
+                        .status(200)
+                        .message("Login successfully")
+                        .data(customer)
+                        .build();
+                return ResponseEntity.ok(response);
+            }
+        }
+        ApiResponse response = new ApiResponse.Builder()
+                .status(404)
+                .message("Login unsuccessfully")
+                .data(null)
+                .build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 }

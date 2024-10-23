@@ -9,4 +9,6 @@ public interface CustomerService {
     List<Customer> findAll();
     Optional<Customer> findById(Integer id);
     Customer createCustomer(Customer customer);
+    String generateIBAN();
+    Optional<Customer> findByUsername(String username);
 }

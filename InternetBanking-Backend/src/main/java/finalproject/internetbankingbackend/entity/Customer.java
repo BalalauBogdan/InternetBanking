@@ -15,6 +15,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String iban;
+    private String role;
     private String username;
     private String password;
     private String firstname;
