@@ -57,7 +57,10 @@ public class RegisterController {
                     if (code == HttpURLConnection.HTTP_OK || code == HttpURLConnection.HTTP_CREATED) {
                         System.out.println("Customer adăugat cu succes.");
                     } else {
-                        System.out.println("Eroare la adăugarea customer-ului: " + code);
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Username inregistrat anterior. ", ButtonType.OK);
+                        alert.setTitle("Used Username");
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
                     }
                 }
                 else {
