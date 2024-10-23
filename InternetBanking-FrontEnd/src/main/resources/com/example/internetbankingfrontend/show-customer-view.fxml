@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.internetbankingfrontend.controller.customer.ShowCustomerController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Introdu ID Customer"/>
+    <TextField fx:id="CustomerIDField" promptText="Customer ID"/>
+    <Button text="Find Customer" onAction="#findCustomer"/>
+
+    <Label fx:id="usernameLabel" text="Username" visible="false"/>
+    <TextField fx:id="usernameField" visible="false" editable="false" />
+
+    <Label fx:id="passwordLabel" text="Password" visible="false"/>
+    <TextField fx:id="passwordField" visible="false" editable="false" />
+
+    <Label fx:id="firstnameLabel" text="Firstname" visible="false"/>
+    <TextField fx:id="firstnameField" visible="false" editable="false" />
+
+    <Label fx:id="lastnameLabel" text="Lastname" visible="false"/>
+    <TextField fx:id="lastnameField" visible="false" editable="false" />
+
+    <Label fx:id="phonenumberLabel" text="Phone Number" visible="false"/>
+    <TextField fx:id="phonenumberField" visible="false" editable="false" />
+</VBox>

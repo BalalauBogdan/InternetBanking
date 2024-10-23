@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.internetbankingfrontend.controller.register.RegisterController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Inregistreaza-te la banca noastra! "/>
+    <TextField fx:id="RegisterUsername" promptText="Enter Username"/>
+    <TextField fx:id="RegisterPassword" promptText="Enter Password"/>
+    <TextField fx:id="RegisterConfirmPassword" promptText="Confirm Password"/>
+    <TextField fx:id="RegisterFirstName" promptText="Enter First Name"/>
+    <TextField fx:id="RegisterLastName" promptText="Enter Last Name"/>
+    <TextField fx:id="RegisterPhoneNumber" promptText="Enter Phone Number"/>
+    <Button text="Register" onAction="#RegisterCustomer"/>
+</VBox>
