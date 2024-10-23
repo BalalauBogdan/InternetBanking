@@ -25,7 +25,16 @@ public class AdminController {
         stage.showAndWait();
     }
     @FXML
-    private void openShowCustomerByID(){
-
+    private void openShowCustomerByID() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("show-customer-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Show Customer");
+        stage.setHeight(500);
+        stage.setWidth(500);
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(stage.getOwner());
+        stage.showAndWait();
     }
 }
