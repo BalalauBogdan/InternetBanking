@@ -54,6 +54,17 @@ public class CustomerController {
 
     @PostMapping("/")
     public ResponseEntity<ApiResponse> createCustomer(@RequestBody CustomerDTO customerDTO) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(customerDTO.getUsername());
+
+        if (optionalCustomer.isPresent()) {
+            ApiResponse response = new ApiResponse.Builder()
+                    .status(404)
+                    .message("Customer already exists")
+                    .data(null)
+                    .build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+
         Customer customer = new Customer();
         customer.setIban(this.customerService.generateIBAN());
         customer.setRole("USER");
