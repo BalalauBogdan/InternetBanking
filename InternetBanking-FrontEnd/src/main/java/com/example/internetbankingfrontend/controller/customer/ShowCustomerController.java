@@ -4,6 +4,11 @@ import javafx.fxml.FXML;
 import org.w3c.dom.Text;
 
 import java.awt.*;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
@@ -36,33 +41,45 @@ public class ShowCustomerController {
     @FXML
     private Label phonenumberLabel;
 
-//    @FXML
-//    public void findCustomer() {
-//        try {
-//            Customer book = this.bookService.getBookById(Integer.valueOf(bookIdField.getText()));
-//            this.titleField.setText(book.getTitle());
-//            this.authorField.setText(book.getAuthor());
-//            this.descriptionField.setText(book.getDescription());
-//            this.priceField.setText(book.getPrice().toString());
-//
-//            this.titleLabel.setVisible(true);
-//            this.titleField.setVisible(true);
-//            this.authorLabel.setVisible(true);
-//            this.authorField.setVisible(true);
-//            this.descriptionLabel.setVisible(true);
-//            this.descriptionField.setVisible(true);
-//            this.priceLabel.setVisible(true);
-//            this.priceField.setVisible(true);
-//        } catch (Exception e) {
-//            this.showConfirmationMessage(Alert.AlertType.ERROR,"Error","Book not found with id: " + this.bookIdField.getText());
-//        }
-//    }
-//
-//    private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {
-//        Alert alert = new Alert(alertType);
-//        alert.setTitle(title);
-//        alert.setHeaderText(null);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
+    @FXML
+    public void findCustomer() {
+        /*
+        String inputCustomerID=CustomerIDField.getText();
+        if(inputCustomerID.isEmpty())
+            return;
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/api/customer/" + inputCustomerID))
+                .build();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenAccept(response -> {
+                            JSONObject customer = new JSONObject(response);
+
+                    usernameField.setText(customer.getString("username"));
+                    passwordField.setText(customer.getString("password"));
+                    firstnameField.setText(customer.getString("firstname"));
+                    lastnameField.setText(customer.getString("lastname"));
+                    phonenumberField.setText(customer.getString("phonenumber"));
+
+                    usernameLabel.setVisible(true);
+                    usernameField.setVisible(true);
+                    passwordLabel.setVisible(true);
+                    passwordField.setVisible(true);
+                    firstnameLabel.setVisible(true);
+                    firstnameField.setVisible(true);
+                    lastnameLabel.setVisible(true);
+                    lastnameField.setVisible(true);
+                    phonenumberLabel.setVisible(true);
+                    phonenumberField.setVisible(true);
+                })
+                .exceptionally(e -> {
+                    e.printStackTrace();
+                    return null;
+                });
+
+         */
+   }
 }
