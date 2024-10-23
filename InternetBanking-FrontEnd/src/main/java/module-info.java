@@ -22,4 +22,7 @@ module com.example.internetbankingfrontend {
     exports com.example.internetbankingfrontend.controller.User;
     opens com.example.internetbankingfrontend.controller.Deposit to javafx.fxml;
     exports com.example.internetbankingfrontend.controller.Deposit;
+    opens com.example.internetbankingfrontend.controller.Withdraw to javafx.fxml;
+    exports com.example.internetbankingfrontend.controller.Withdraw;
+
 }
