@@ -68,7 +68,7 @@ public class CustomerController {
 
         Customer customer = new Customer();
         customer.setIban(this.customerService.generateIBAN());
-        customer.setSold(customerDTO.getSold());
+        customer.setSold(0.0);
         customer.setRole("USER");
         customer.setUsername(customerDTO.getUsername());
         customer.setPassword(customerDTO.getPassword());
