@@ -9,9 +9,10 @@ public class Customer {
     private String firstname;
     private String lastname;
     private String phoneNumber;
+    private double amount;
 
     public Customer(){}
-    public Customer(Integer id, String iban, String role, String username, String password, String firstname, String lastname, String phoneNumber) {
+    public Customer(Integer id, String iban, String role, String username, String password, String firstname, String lastname, String phoneNumber, double amount) {
         this.id = id;
         this.iban = iban;
         this.role = role;
@@ -20,6 +21,15 @@ public class Customer {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
+        this.amount=amount;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public Integer getId() {

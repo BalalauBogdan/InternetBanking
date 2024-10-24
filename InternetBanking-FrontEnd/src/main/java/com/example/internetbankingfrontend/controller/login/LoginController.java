@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import org.json.JSONObject;
 
 public class LoginController {
+    public static Customer user = new Customer();
     @FXML
     private TextField username;
     @FXML
@@ -62,7 +63,6 @@ public class LoginController {
                     // Aici poți lucra cu răspunsul, de exemplu extrage datele din JSON
                     JSONObject customer = jsonResponse.getJSONObject("data");
 
-                    Customer user=new Customer();
                     user.setUsername(customer.getString("username"));
                     user.setPassword(customer.getString("password"));
                     user.setFirstname(customer.getString("firstname"));
@@ -71,6 +71,8 @@ public class LoginController {
                     user.setId(customer.getInt("id"));
                     user.setRole(customer.getString("role"));
                     user.setPhoneNumber(customer.getString("phoneNumber"));
+
+
 
                     FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("User-view.fxml"));
                     Parent root = fxmlLoader.load();
