@@ -1,8 +1,9 @@
 package com.example.internetbankingfrontend.controller.customer;
 
 import javafx.fxml.FXML;
+import netscape.javascript.JSObject;
 import org.w3c.dom.Text;
-
+import org.json.JSONObject;
 import java.awt.*;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -43,7 +44,7 @@ public class ShowCustomerController {
 
     @FXML
     public void findCustomer() {
-        /*
+
         String inputCustomerID=CustomerIDField.getText();
         if(inputCustomerID.isEmpty())
             return;
@@ -56,13 +57,14 @@ public class ShowCustomerController {
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
                 .thenAccept(response -> {
-                            JSONObject customer = new JSONObject(response);
-
+                    System.out.println(response);
+                    JSONObject jsonResponse = new JSONObject(response);
+                    JSONObject customer = jsonResponse.getJSONObject("data");
                     usernameField.setText(customer.getString("username"));
                     passwordField.setText(customer.getString("password"));
                     firstnameField.setText(customer.getString("firstname"));
                     lastnameField.setText(customer.getString("lastname"));
-                    phonenumberField.setText(customer.getString("phonenumber"));
+                    phonenumberField.setText(customer.getString("phoneNumber"));
 
                     usernameLabel.setVisible(true);
                     usernameField.setVisible(true);
@@ -79,7 +81,5 @@ public class ShowCustomerController {
                     e.printStackTrace();
                     return null;
                 });
-
-         */
    }
 }

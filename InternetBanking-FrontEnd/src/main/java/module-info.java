@@ -5,6 +5,8 @@ module com.example.internetbankingfrontend {
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
     requires java.net.http;
+    requires jdk.jsobject;
+    requires org.json;
 
     opens com.example.internetbankingfrontend to javafx.fxml;
     exports com.example.internetbankingfrontend;
@@ -20,4 +22,7 @@ module com.example.internetbankingfrontend {
     exports com.example.internetbankingfrontend.controller.User;
     opens com.example.internetbankingfrontend.controller.Deposit to javafx.fxml;
     exports com.example.internetbankingfrontend.controller.Deposit;
+    opens com.example.internetbankingfrontend.controller.Withdraw to javafx.fxml;
+    exports com.example.internetbankingfrontend.controller.Withdraw;
+
 }
