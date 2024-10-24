@@ -1,6 +1,7 @@
 package finalproject.internetbankingbackend.controller;
 
 import finalproject.internetbankingbackend.dto.CustomerDTO;
+import finalproject.internetbankingbackend.dto.DepositDTO;
 import finalproject.internetbankingbackend.dto.LoginDTO;
 import finalproject.internetbankingbackend.entity.Customer;
 import finalproject.internetbankingbackend.service.CustomerService;
@@ -56,6 +57,7 @@ public class CustomerController {
     public ResponseEntity<ApiResponse> createCustomer(@RequestBody CustomerDTO customerDTO) {
         Customer customer = new Customer();
         customer.setIban(this.customerService.generateIBAN());
+        customer.setSold(customerDTO.getSold());
         customer.setRole("USER");
         customer.setUsername(customerDTO.getUsername());
         customer.setPassword(customerDTO.getPassword());
@@ -88,6 +90,27 @@ public class CustomerController {
         ApiResponse response = new ApiResponse.Builder()
                 .status(404)
                 .message("Login unsuccessfully")
+                .data(null)
+                .build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+    @PostMapping("/deposit")
+    public ResponseEntity<ApiResponse> depositMoney(@RequestBody DepositDTO depositDTO) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(depositDTO.getUsername());
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            customer.setSold(customer.getSold() + depositDTO.getAmount());
+            ApiResponse response = new ApiResponse.Builder()
+                    .status(200)
+                    .message("Deposit made successfully")
+                    .data(customer)
+                    .build();
+            return ResponseEntity.ok(response);
+        }
+        ApiResponse response = new ApiResponse.Builder()
+                .status(404)
+                .message("User not found")
                 .data(null)
                 .build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);

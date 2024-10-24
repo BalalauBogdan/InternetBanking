@@ -14,6 +14,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Double sold;
     private String iban;
     private String role;
     private String username;
