@@ -41,4 +41,17 @@ public class UserController {
     private void openTransferMoney() throws IOException{
 
     }
+    @FXML
+    private void openShowSold() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("show-sold.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Sold");
+        stage.setHeight(500);
+        stage.setWidth(500);
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(stage.getOwner());
+        stage.showAndWait();
+    }
 }
