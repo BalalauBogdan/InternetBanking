@@ -115,7 +115,7 @@ public class CustomerController {
             ApiResponse response = new ApiResponse.Builder()
                     .status(200)
                     .message("Deposit made successfully")
-                    .data(customer)
+                    .data(this.customerService.updateCustomer(customer))
                     .build();
             return ResponseEntity.ok(response);
         }

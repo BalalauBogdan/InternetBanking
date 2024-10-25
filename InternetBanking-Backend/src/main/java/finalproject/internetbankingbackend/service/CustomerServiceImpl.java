@@ -48,4 +48,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Optional<Customer> findByUsername(String username) {
         return this.customerRepository.findByUsername(username);
     }
+
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        return this.customerRepository.save(customer);
+    }
 }
