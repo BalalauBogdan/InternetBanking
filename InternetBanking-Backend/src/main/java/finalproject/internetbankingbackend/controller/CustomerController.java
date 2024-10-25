@@ -1,9 +1,6 @@
 package finalproject.internetbankingbackend.controller;
 
-import finalproject.internetbankingbackend.dto.CustomerDTO;
-import finalproject.internetbankingbackend.dto.DepositDTO;
-import finalproject.internetbankingbackend.dto.LoginDTO;
-import finalproject.internetbankingbackend.dto.WithdrawDTO;
+import finalproject.internetbankingbackend.dto.*;
 import finalproject.internetbankingbackend.entity.Customer;
 import finalproject.internetbankingbackend.service.CustomerService;
 import finalproject.internetbankingbackend.utils.ApiResponse;
@@ -149,6 +146,26 @@ public class CustomerController {
                         .build();
                 return ResponseEntity.ok(response);
             }
+        }
+        ApiResponse response = new ApiResponse.Builder()
+                .status(404)
+                .message("User not found")
+                .data(null)
+                .build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+    @PostMapping("/sold")
+    public ResponseEntity<ApiResponse> displaySold(@RequestBody SoldDTO soldDTO) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(soldDTO.getUsername());
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            ApiResponse response = new ApiResponse.Builder()
+                    .status(200)
+                    .message("Sold")
+                    .data(customer.getSold())
+                    .build();
+            return ResponseEntity.ok(response);
         }
         ApiResponse response = new ApiResponse.Builder()
                 .status(404)
