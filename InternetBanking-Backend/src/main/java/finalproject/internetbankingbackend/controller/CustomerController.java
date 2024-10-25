@@ -3,6 +3,7 @@ package finalproject.internetbankingbackend.controller;
 import finalproject.internetbankingbackend.dto.CustomerDTO;
 import finalproject.internetbankingbackend.dto.DepositDTO;
 import finalproject.internetbankingbackend.dto.LoginDTO;
+import finalproject.internetbankingbackend.dto.WithdrawDTO;
 import finalproject.internetbankingbackend.entity.Customer;
 import finalproject.internetbankingbackend.service.CustomerService;
 import finalproject.internetbankingbackend.utils.ApiResponse;
@@ -118,6 +119,36 @@ public class CustomerController {
                     .data(this.customerService.updateCustomer(customer))
                     .build();
             return ResponseEntity.ok(response);
+        }
+        ApiResponse response = new ApiResponse.Builder()
+                .status(404)
+                .message("User not found")
+                .data(null)
+                .build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+    @PostMapping("/withdraw")
+    public ResponseEntity<ApiResponse> withdrawMoney(@RequestBody WithdrawDTO withdrawDTO) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(withdrawDTO.getUsername());
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            if (withdrawDTO.getAmount() > customer.getSold()) {
+                ApiResponse response = new ApiResponse.Builder()
+                        .status(400)
+                        .message("Insufficient funds")
+                        .data(null)
+                        .build();
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            } else {
+                customer.setSold(customer.getSold() - withdrawDTO.getAmount());
+                ApiResponse response = new ApiResponse.Builder()
+                        .status(200)
+                        .message("Withdraw made successfully")
+                        .data(this.customerService.updateCustomer(customer))
+                        .build();
+                return ResponseEntity.ok(response);
+            }
         }
         ApiResponse response = new ApiResponse.Builder()
                 .status(404)
