@@ -175,9 +175,9 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
-    @PostMapping("/delete")
-    public ResponseEntity<ApiResponse> deleteCustomer(@RequestBody DeleteDTO deleteDTO) {
-        Optional<Customer> optionalCustomer = this.customerService.findByUsername(deleteDTO.getUsername());
+    @PostMapping("/delete/{username}")
+    public ResponseEntity<ApiResponse> deleteCustomer(@PathVariable String username) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(username);
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
             this.customerService.deleteCustomer(customer);
