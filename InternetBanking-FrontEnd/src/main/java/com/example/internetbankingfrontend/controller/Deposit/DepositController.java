@@ -59,8 +59,7 @@ public class DepositController {
 
                     System.out.println("Response: " + response);
                     JSONObject jsonResponse = new JSONObject(response.toString());
-                    System.out.println("Message: " + jsonResponse.getString("message"));
-
+                    this.showConfirmationMessage(Alert.AlertType.INFORMATION, "Deposit", jsonResponse.getString("message"));
                     LoginController.user.setAmount(inputSumofMoney);
                 }
 

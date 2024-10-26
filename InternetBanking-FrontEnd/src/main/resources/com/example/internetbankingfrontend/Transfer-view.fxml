@@ -15,5 +15,5 @@
     <Label text="Transfer Money"/>
     <TextField fx:id="TransferPerson" promptText="Enter IBAN of beneficiary account"/>
     <TextField fx:id="TransferSum" promptText="Enter sum of money"/>
-    <Button text="Transfer" onAction="TransferSumofMoney"/>
+    <Button text="Transfer" onAction="#TransferSumofMoney"/>
 </VBox>

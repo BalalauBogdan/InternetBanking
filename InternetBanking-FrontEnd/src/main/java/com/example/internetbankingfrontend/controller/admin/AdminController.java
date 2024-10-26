@@ -37,4 +37,18 @@ public class AdminController {
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
     }
+    @FXML
+    private void openDeleteCustomerByUsername() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("delete-customer-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Delete Customer");
+        stage.setHeight(500);
+        stage.setWidth(500);
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(stage.getOwner());
+        stage.showAndWait();
+    }
+
 }

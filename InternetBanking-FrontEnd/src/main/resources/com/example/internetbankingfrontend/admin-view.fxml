@@ -15,5 +15,6 @@
     <Label text="Meniu admin"/>
     <Button text="Adauga client" onAction="#openAddCustomer"/>
     <Button text="Afiseaza client" onAction="#openShowCustomerByID"/>
+    <Button text="Sterge client" onAction="#openDeleteCustomerByUsername"/>
 
 </VBox>

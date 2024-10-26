@@ -52,14 +52,16 @@ public class WithdrawController {
 
                     System.out.println("Response: " + response);
                     JSONObject jsonResponse = new JSONObject(response.toString());
-                    System.out.println("Message: " + jsonResponse.getString("message"));
-
+                    this.showConfirmationMessage(Alert.AlertType.INFORMATION, "Confimation", jsonResponse.getString("message"));
                     LoginController.user.setAmount(inputSumofMoney);
                 }
 
 
             } else {
                 System.out.println("Eroare" + code);
+                if(code==400){
+                    this.showConfirmationMessage(Alert.AlertType.ERROR,"Error", "Insufficient funds");
+                }
             }
 
         } catch (Exception e) {

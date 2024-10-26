@@ -14,5 +14,5 @@
     </padding>
     <Label text="Delete Customer"/>
     <TextField fx:id="CustomerUsername" promptText="Enter the username of the account"/>
-    <Button text="Delete" onAction="DeleteCustomer"/>
+    <Button text="Delete" onAction="#DeleteCustomer"/>
 </VBox>

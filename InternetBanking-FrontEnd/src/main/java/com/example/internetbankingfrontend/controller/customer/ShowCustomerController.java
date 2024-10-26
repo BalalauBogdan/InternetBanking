@@ -59,23 +59,23 @@ public class ShowCustomerController {
                 .thenAccept(response -> {
                     System.out.println(response);
                     JSONObject jsonResponse = new JSONObject(response);
-                    JSONObject customer = jsonResponse.getJSONObject("data");
-                    usernameField.setText(customer.getString("username"));
-                    passwordField.setText(customer.getString("password"));
-                    firstnameField.setText(customer.getString("firstname"));
-                    lastnameField.setText(customer.getString("lastname"));
-                    phonenumberField.setText(customer.getString("phoneNumber"));
+                        JSONObject customer = jsonResponse.getJSONObject("data");
+                        usernameField.setText(customer.getString("username"));
+                        passwordField.setText(customer.getString("password"));
+                        firstnameField.setText(customer.getString("firstname"));
+                        lastnameField.setText(customer.getString("lastname"));
+                        phonenumberField.setText(customer.getString("phoneNumber"));
 
-                    usernameLabel.setVisible(true);
-                    usernameField.setVisible(true);
-                    passwordLabel.setVisible(true);
-                    passwordField.setVisible(true);
-                    firstnameLabel.setVisible(true);
-                    firstnameField.setVisible(true);
-                    lastnameLabel.setVisible(true);
-                    lastnameField.setVisible(true);
-                    phonenumberLabel.setVisible(true);
-                    phonenumberField.setVisible(true);
+                        usernameLabel.setVisible(true);
+                        usernameField.setVisible(true);
+                        passwordLabel.setVisible(true);
+                        passwordField.setVisible(true);
+                        firstnameLabel.setVisible(true);
+                        firstnameField.setVisible(true);
+                        lastnameLabel.setVisible(true);
+                        lastnameField.setVisible(true);
+                        phonenumberLabel.setVisible(true);
+                        phonenumberField.setVisible(true);
                 })
                 .exceptionally(e -> {
                     e.printStackTrace();
