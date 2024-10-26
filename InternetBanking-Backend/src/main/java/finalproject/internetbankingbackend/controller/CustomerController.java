@@ -174,4 +174,25 @@ public class CustomerController {
                 .build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<ApiResponse> deleteCustomer(@RequestBody DeleteDTO deleteDTO) {
+        Optional<Customer> optionalCustomer = this.customerService.findByUsername(deleteDTO.getUsername());
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            this.customerService.deleteCustomer(customer);
+            ApiResponse response = new ApiResponse.Builder()
+                    .status(200)
+                    .message("Customer deleted successfully")
+                    .data(null)
+                    .build();
+            return ResponseEntity.ok(response);
+        }
+        ApiResponse response = new ApiResponse.Builder()
+                .status(404)
+                .message("User not found")
+                .data(null)
+                .build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
 }

@@ -12,4 +12,5 @@ public interface CustomerService {
     String generateIBAN();
     Optional<Customer> findByUsername(String username);
     Customer updateCustomer(Customer customer);
+    void deleteCustomer(Customer customer);
 }
