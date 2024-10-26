@@ -1,6 +1,7 @@
 package com.example.internetbankingfrontend.controller.User;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
+import com.example.internetbankingfrontend.controller.sold.ShowSoldController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,6 +46,8 @@ public class UserController {
     private void openShowSold() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("show-sold.fxml"));
         Parent root = fxmlLoader.load();
+        ShowSoldController showSoldController = fxmlLoader.getController();
+        showSoldController.ShowSold();
         Stage stage = new Stage();
         stage.setTitle("Sold");
         stage.setHeight(500);
@@ -53,5 +56,6 @@ public class UserController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
+
     }
 }

@@ -8,13 +8,12 @@
 
 <?import javafx.geometry.Insets?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.internetbankingfrontend.controller.Deposit.DepositController">
+      fx:controller="com.example.internetbankingfrontend.controller.Transfer.TransferController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label text="Depunere"/>
-    <TextField fx:id="DepositSum" promptText="Enter the sum to deposit"/>
-    <Button text="Deposit" onAction="#DepositSumofMoney"/>
-
-
+    <Label text="Transfer Money"/>
+    <TextField fx:id="TransferPerson" promptText="Enter IBAN of beneficiary account"/>
+    <TextField fx:id="TransferSum" promptText="Enter sum of money"/>
+    <Button text="Transfer" onAction="TransferSumofMoney"/>
 </VBox>
