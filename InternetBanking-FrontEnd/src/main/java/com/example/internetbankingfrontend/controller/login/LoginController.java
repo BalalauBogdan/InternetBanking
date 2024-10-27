@@ -2,6 +2,7 @@ package com.example.internetbankingfrontend.controller.login;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
 import com.example.internetbankingfrontend.entity.Customer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +29,10 @@ public class LoginController {
     private TextField username;
     @FXML
     private TextField password;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> username.getParent().requestFocus());
+    }
     @FXML
     public void Login() {
         try {
@@ -76,11 +82,14 @@ public class LoginController {
 
                     FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("User-view.fxml"));
                     Parent root = fxmlLoader.load();
+                    String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+                    Scene scene = new Scene(root);
+                    scene.getStylesheets().add(css);
                     Stage stage = new Stage();
                     stage.setTitle("User Menu");
                     stage.setHeight(500);
                     stage.setWidth(500);
-                    stage.setScene(new Scene(root));
+                    stage.setScene(scene);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.initOwner(stage.getOwner());
                     stage.showAndWait();
@@ -111,11 +120,14 @@ public class LoginController {
     public void Register() throws IOException {
             FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("Register-view.fxml"));
             Parent root = fxmlLoader.load();
+            String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(css);
             Stage stage = new Stage();
             stage.setTitle("Register");
             stage.setHeight(500);
             stage.setWidth(500);
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
             stage.showAndWait();

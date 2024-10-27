@@ -2,6 +2,7 @@ package com.example.internetbankingfrontend.controller;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
 import com.example.internetbankingfrontend.controller.admin.AdminLoginController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +23,6 @@ public class InternetBankingController {
             Scene scene = new Scene(root);
             String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
             scene.getStylesheets().add(css);
-
             Stage stage = new Stage();
             stage.setTitle("Login or register into account");
             stage.setHeight(350);

@@ -1,5 +1,6 @@
 package com.example.internetbankingfrontend.controller.customer;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import netscape.javascript.JSObject;
 import org.w3c.dom.Text;
@@ -41,6 +42,10 @@ public class ShowCustomerController {
     private TextField phonenumberField;
     @FXML
     private Label phonenumberLabel;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> CustomerIDField.getParent().requestFocus());
+    }
 
     @FXML
     public void findCustomer() {

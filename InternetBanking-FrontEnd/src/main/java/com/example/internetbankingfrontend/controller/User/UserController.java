@@ -10,17 +10,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class UserController {
     @FXML
     private void openDepositMoney() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("Deposit-view.fxml"));
         Parent root = fxmlLoader.load();
+        String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(css);
         Stage stage = new Stage();
         stage.setTitle("Deposit Money");
         stage.setHeight(500);
         stage.setWidth(500);
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -29,11 +33,14 @@ public class UserController {
     private void openWithdrawMoney() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("Withdraw-view.fxml"));
         Parent root = fxmlLoader.load();
+        String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(css);
         Stage stage = new Stage();
         stage.setTitle("Withdraw Money");
         stage.setHeight(500);
         stage.setWidth(500);
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -42,11 +49,14 @@ public class UserController {
     private void openTransferMoney() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("Transfer-view.fxml"));
         Parent root = fxmlLoader.load();
+        String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(css);
         Stage stage = new Stage();
         stage.setTitle("Transfer Money");
         stage.setHeight(500);
         stage.setWidth(500);
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -57,11 +67,14 @@ public class UserController {
         Parent root = fxmlLoader.load();
         ShowSoldController showSoldController = fxmlLoader.getController();
         showSoldController.ShowSold();
+        String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(css);
         Stage stage = new Stage();
         stage.setTitle("Sold");
         stage.setHeight(500);
         stage.setWidth(500);
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();

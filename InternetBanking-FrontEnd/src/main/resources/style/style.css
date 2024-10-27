@@ -20,3 +20,25 @@ VBox, HBox {
     -fx-text-fill: white;
 
 }
+.soldfield{
+    -fx-background-color: #DFF2EB;
+    -fx-border-color: none;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+}
+
+.findcustomerfield{
+    -fx-background-color: #DFF2EB;
+    -fx-border-color: none;
+    -fx-alignment: center-left;
+
+}
+
+.findcustomerlabel{
+    -fx-font-weight: bold;
+}
+
+.Hboxfindcustomer{
+    -fx-spacing: 0;
+}

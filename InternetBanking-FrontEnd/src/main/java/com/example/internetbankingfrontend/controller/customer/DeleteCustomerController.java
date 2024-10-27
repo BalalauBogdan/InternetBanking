@@ -12,6 +12,10 @@ import java.net.http.HttpResponse;
 public class DeleteCustomerController {
     @FXML
     TextField CustomerUsername;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> CustomerUsername.getParent().requestFocus());
+    }
 
     @FXML
     public void DeleteCustomer() {

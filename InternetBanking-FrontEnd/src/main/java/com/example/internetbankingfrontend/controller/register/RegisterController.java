@@ -1,5 +1,6 @@
 package com.example.internetbankingfrontend.controller.register;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -23,6 +24,10 @@ public class RegisterController {
     private TextField RegisterLastName;
     @FXML
     private TextField RegisterPhoneNumber;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> RegisterUsername.getParent().requestFocus());
+    }
 
     @FXML
     public void RegisterCustomer() {

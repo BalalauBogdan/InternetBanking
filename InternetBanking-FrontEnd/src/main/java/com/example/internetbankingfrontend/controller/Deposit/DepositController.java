@@ -2,6 +2,7 @@ package com.example.internetbankingfrontend.controller.Deposit;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
 import com.example.internetbankingfrontend.controller.login.LoginController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,10 @@ import java.net.URL;
 public class DepositController {
     @FXML
     TextField DepositSum;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> DepositSum.getParent().requestFocus());
+    }
 
     @FXML
     public void DepositSumofMoney() {

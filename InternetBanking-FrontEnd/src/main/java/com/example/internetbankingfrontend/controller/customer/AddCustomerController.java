@@ -1,5 +1,6 @@
 package com.example.internetbankingfrontend.controller.customer;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import java.io.OutputStream;
@@ -17,6 +18,10 @@ public class AddCustomerController {
     private TextField CustomerLastName;
     @FXML
     private TextField CustomerPhoneNumber;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> CustomerUsername.getParent().requestFocus());
+    }
     @FXML
     public void AddCustomer(){
         try {

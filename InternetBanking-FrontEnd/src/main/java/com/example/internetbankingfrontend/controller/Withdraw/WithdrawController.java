@@ -1,6 +1,7 @@
 package com.example.internetbankingfrontend.controller.Withdraw;
 
 import com.example.internetbankingfrontend.controller.login.LoginController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -15,6 +16,10 @@ import java.net.URL;
 public class WithdrawController {
     @FXML
     TextField WithdrawSum;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> WithdrawSum.getParent().requestFocus());
+    }
     @FXML
     public void WithdrawSumofMoney(){
         try {

@@ -1,6 +1,7 @@
 package com.example.internetbankingfrontend.controller.sold;
 
 import com.example.internetbankingfrontend.controller.login.LoginController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -18,6 +19,10 @@ import java.net.http.HttpResponse;
 public class ShowSoldController {
     @FXML
     private TextField SoldField;
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> SoldField.getParent().requestFocus());
+    }
     @FXML
     public void ShowSold(){
         try {
