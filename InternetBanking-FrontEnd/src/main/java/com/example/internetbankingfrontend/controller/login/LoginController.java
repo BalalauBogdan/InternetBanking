@@ -55,7 +55,7 @@ public class LoginController {
                         response.append(responseLine.trim());
                     }
 
-                    System.out.println("Response: " + response.toString());
+                    System.out.println("Response: " + response);
 
                     // Dacă răspunsul este în format JSON, îl poți parsa folosind org.json.JSONObject
                     JSONObject jsonResponse = new JSONObject(response.toString());
@@ -92,6 +92,7 @@ public class LoginController {
 
             } else {
                 System.out.println("Eroare la autentificare" + code);
+                showConfirmationMessage(Alert.AlertType.WARNING, "Warning", "The username or password is incorrect.");
             }
 
         } catch (Exception e) {

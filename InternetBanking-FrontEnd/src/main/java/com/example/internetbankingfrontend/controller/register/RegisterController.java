@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class RegisterController {
     @FXML
@@ -22,57 +23,74 @@ public class RegisterController {
     private TextField RegisterLastName;
     @FXML
     private TextField RegisterPhoneNumber;
+
     @FXML
-    public void RegisterCustomer(){
-            try {
-                String inputRegisterUsername = RegisterUsername.getText();
-                String inputRegisterPassword = RegisterPassword.getText();
-                String inputRegisterConfirmPassword = RegisterConfirmPassword.getText();
-                String inputRegisterFirstName = RegisterFirstName.getText();
-                String inputRegisterLastName = RegisterLastName.getText();
-                String inputRegisterPhoneNumber = RegisterPhoneNumber.getText();
+    public void RegisterCustomer() {
+        try {
+            String username = RegisterUsername.getText();
+            String password = RegisterPassword.getText();
+            String confirmPassword = RegisterConfirmPassword.getText();
+            String firstName = RegisterFirstName.getText();
+            String lastName = RegisterLastName.getText();
+            String phoneNumber = RegisterPhoneNumber.getText();
 
-                if(inputRegisterPassword.equals(inputRegisterConfirmPassword)) {
+            if (isInputValid(username, password, confirmPassword, firstName, lastName, phoneNumber)) {
+                if (password.equals(confirmPassword)) {
+                    String jsonInputString = createJsonString(username, password, firstName, lastName, phoneNumber);
+                    int responseCode = sendRegistrationRequest(jsonInputString);
 
-                    String jsonInputString = "{"
-                            + "\"username\": \"" + inputRegisterUsername + "\","
-                            + "\"password\": \"" + inputRegisterPassword + "\","
-                            + "\"firstname\": \"" + inputRegisterFirstName + "\","
-                            + "\"lastname\": \"" + inputRegisterLastName + "\","
-                            + "\"phoneNumber\": \"" + inputRegisterPhoneNumber + "\""
-                            + "}";
-                    URL url = new URL("http://localhost:8080/api/customer/");
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-                    con.setRequestMethod("POST");
-                    con.setRequestProperty("Content-Type", "application/json; utf-8");
-                    con.setRequestProperty("Accept", "application/json");
-                    con.setDoOutput(true);
-
-                    try (OutputStream os = con.getOutputStream()) {
-                        byte[] input = jsonInputString.getBytes("utf-8");
-                        os.write(input, 0, input.length);
-                    }
-                    int code = con.getResponseCode();
-                    if (code == HttpURLConnection.HTTP_OK || code == HttpURLConnection.HTTP_CREATED) {
-                        System.out.println("Customer adăugat cu succes.");
+                    if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED) {
+                        showAlert(Alert.AlertType.INFORMATION, "Success", "Customer adăugat cu succes.");
                     } else {
-                        Alert alert = new Alert(Alert.AlertType.WARNING, "Username inregistrat anterior. ", ButtonType.OK);
-                        alert.setTitle("Used Username");
-                        alert.setHeaderText(null);
-                        alert.showAndWait();
+                        showAlert(Alert.AlertType.WARNING, "Used Username", "Username inregistrat anterior.");
                     }
+                } else {
+                    showAlert(Alert.AlertType.WARNING, "Eroare Parole", "Parolele nu corespund.");
                 }
-                else {
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Parolele nu corespund", ButtonType.OK);
-                    alert.setTitle("Eroare Parole");
-                    alert.setHeaderText(null);
-                    alert.showAndWait();
-                }
-
-
-            } catch(Exception e){
-                e.printStackTrace();
+            } else {
+                showAlert(Alert.AlertType.WARNING, "Eroare", "Completeaza toate campurile.");
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isInputValid(String username, String password, String confirmPassword, String firstName, String lastName, String phoneNumber) {
+        return !username.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()
+                && !firstName.isEmpty() && !lastName.isEmpty() && !phoneNumber.isEmpty();
+    }
+
+    private String createJsonString(String username, String password, String firstName, String lastName, String phoneNumber) {
+        return "{"
+                + "\"username\": \"" + username + "\","
+                + "\"password\": \"" + password + "\","
+                + "\"firstname\": \"" + firstName + "\","
+                + "\"lastname\": \"" + lastName + "\","
+                + "\"phoneNumber\": \"" + phoneNumber + "\""
+                + "}";
+    }
+
+    private int sendRegistrationRequest(String jsonInputString) throws Exception {
+        URL url = new URL("http://localhost:8080/api/customer/");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json; utf-8");
+        con.setRequestProperty("Accept", "application/json");
+        con.setDoOutput(true);
+
+        try (OutputStream os = con.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+        return con.getResponseCode();
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type, message, ButtonType.OK);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.showAndWait();
     }
 }
