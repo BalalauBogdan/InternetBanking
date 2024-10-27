@@ -30,7 +30,7 @@ public class AdminController {
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Show Customer");
-        stage.setHeight(500);
+        stage.setHeight(700);
         stage.setWidth(500);
         stage.setScene(new Scene(root));
         stage.initModality(Modality.APPLICATION_MODAL);

@@ -15,6 +15,8 @@
     <Label text="Login to your account"/>
     <TextField fx:id="username" promptText="Enter Username"/>
     <TextField fx:id="password" promptText="Enter Password"/>
+    <HBox>
     <Button text="Login" onAction="#Login"/>
-    <Button text="register" onAction="#Register"/>
+    <Button text="Register" onAction="#Register"/>
+    </HBox>
 </VBox>

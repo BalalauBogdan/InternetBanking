@@ -12,6 +12,13 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Button text="Login or register" onAction="#OpenLoginOrRegister"/>
+    <Label text="Welcome to Internet Banking!"/>
+    <Label text="Please select if you are a customer or an administrator!"/>
+    <HBox>
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+    <Button text="User" onAction="#OpenLoginOrRegister"/>
     <Button text="Admin" onAction="#OpenAdmin"/>
+    </HBox>
 </VBox>

@@ -1,0 +1,22 @@
+VBox, HBox {
+    -fx-background-color: #DFF2EB;
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+.button{
+    -fx-font-size: 12px;
+    -fx-background-color: #7AB2D3;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 180px;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+.label{
+    -fx-font-size: 12px;
+}
+.button:hover{
+    -fx-background-color: #4A628A;
+    -fx-text-fill: white;
+
+}

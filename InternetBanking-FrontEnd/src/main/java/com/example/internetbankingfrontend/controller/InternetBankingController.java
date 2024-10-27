@@ -11,39 +11,47 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class InternetBankingController {
     @FXML
-    public void OpenLoginOrRegister(){
-        try{
+    public void OpenLoginOrRegister() {
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("login-view.fxml"));
             Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+            scene.getStylesheets().add(css);
+
             Stage stage = new Stage();
             stage.setTitle("Login or register into account");
-            stage.setHeight(500);
+            stage.setHeight(350);
             stage.setWidth(500);
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
             stage.showAndWait();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void OpenAdmin() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("admin-login-view.fxml"));
             Parent root = fxmlLoader.load();
-
-            // Obține instanța controller-ului
             AdminLoginController controller = fxmlLoader.getController();
+
+            Scene scene = new Scene(root);
+            String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+            scene.getStylesheets().add(css);
 
             Stage stage = new Stage();
             stage.setTitle("Admin login");
             stage.setHeight(500);
             stage.setWidth(500);
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
 
