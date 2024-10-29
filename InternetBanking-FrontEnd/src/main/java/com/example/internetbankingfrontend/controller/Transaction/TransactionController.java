@@ -6,9 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.swing.table.TableColumn;
 import javax.swing.text.TabableView;
-import javax.swing.text.TableView;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 
 public class TransactionController {
     @FXML
