@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.util.Callback?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.internetbankingfrontend.controller.Transaction.TransactionController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Transactions History"/>
+    <TableView fx:id="transactionTable">
+        <columns>
+<!--        coloana expeditor-->
+            <TableColumn fx:id="senderColumn" text="Expeditor">
+                <cellValueFactory>
+                    <PropertyValueFactory property="sender"/>
+                </cellValueFactory>
+            </TableColumn>
+<!--        coloana destinatar-->
+            <TableColumn  fx:id="recipientColumn" text="Destinatar">
+                <cellValueFactory>
+                    <PropertyValueFactory property="recepient"/>
+                </cellValueFactory>
+            </TableColumn>
+<!--        coloana suma-->
+            <TableColumn fx:id="amountColumn" text="Suma">
+                <cellValueFactory>
+                    <PropertyValueFactory property="amount"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn  fx:id="actionColumn" text="Actiuni">
+                <cellFactory>
+                    <Callback fx:factory="TableCell">
+                        <ButtonBar>
+                            <Button text="Accept" onAction="#handleAccept"></Button>
+                            <Button text="Decline" onAction="#handleDecline"></Button>
+                        </ButtonBar>
+                    </Callback>
+                </cellFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>
