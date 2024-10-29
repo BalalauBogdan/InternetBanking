@@ -36,14 +36,12 @@
                 </cellValueFactory>
             </TableColumn>
             <TableColumn  fx:id="actionColumn" text="Actiuni">
-                <cellFactory>
-                    <Callback fx:factory="TableCell">
-                        <ButtonBar>
-                            <Button text="Accept" onAction="#handleAccept"></Button>
-                            <Button text="Decline" onAction="#handleDecline"></Button>
-                        </ButtonBar>
-                    </Callback>
-                </cellFactory>
+<!--                <cellValueFactory>-->
+<!--                    <Callback>-->
+<!--                            <Button text="Accept" onAction="#handleAccept"/>-->
+<!--                            <Button text="Decline" onAction="#handleDecline"/>-->
+<!--                    </Callback>-->
+<!--                </cellValueFactory>-->
             </TableColumn>
         </columns>
     </TableView>

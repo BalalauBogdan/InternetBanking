@@ -17,4 +17,5 @@
     <Button text="Withdraw" onAction="#openWithdrawMoney"/>
     <Button text="Transfer" onAction="#openTransferMoney"/>
     <Button text="Sold" onAction="#openShowSold"/>
+    <Button text="Transaction" onAction="#openTransaction"/>
 </VBox>
