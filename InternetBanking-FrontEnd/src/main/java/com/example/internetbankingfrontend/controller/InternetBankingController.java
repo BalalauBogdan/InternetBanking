@@ -56,7 +56,7 @@ public class InternetBankingController {
             stage.initOwner(stage.getOwner());
 
             // Setează dialogStage în controller
-            controller.setDialogStage(stage);
+
 
             stage.showAndWait();
 
