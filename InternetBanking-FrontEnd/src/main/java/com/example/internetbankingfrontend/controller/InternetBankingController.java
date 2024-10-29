@@ -41,7 +41,6 @@ public class InternetBankingController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("admin-login-view.fxml"));
             Parent root = fxmlLoader.load();
-            AdminLoginController controller = fxmlLoader.getController();
 
             Scene scene = new Scene(root);
             String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
@@ -55,20 +54,7 @@ public class InternetBankingController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
 
-            // Setează dialogStage în controller
-
-
             stage.showAndWait();
-
-            if (AdminLoginController.loggedIn == 1) {
-                FXMLLoader adminLoader = new FXMLLoader(InternetBankingApplication.class.getResource("admin-view.fxml"));
-                Parent adminRoot = adminLoader.load();
-                Stage adminStage = new Stage();
-                adminStage.setScene(new Scene(adminRoot));
-                adminStage.show();
-            } else {
-                System.out.println("Autentificare eșuată!");
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }

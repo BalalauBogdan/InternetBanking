@@ -40,7 +40,7 @@ public class AdminLoginController {
     public static Customer user = new Customer();
     public static int loggedIn=0;
     @FXML
-    public void loginAdmin(){
+    public void loginAdmin() {
         try {
             String UsernameAdmin = adminUsername.getText();
             String PasswordAdmin = adminPassword.getText();
@@ -79,8 +79,15 @@ public class AdminLoginController {
                     user.setId(customer.getInt("id"));
                     user.setRole(customer.getString("role"));
                     user.setPhoneNumber(customer.getString("phoneNumber"));
+
                     if (user.getRole().equals("admin")) {
                         loggedIn = 1;
+
+                        // Închide fereastra de login
+                        Stage currentStage = (Stage) adminUsername.getScene().getWindow();
+                        currentStage.close();
+
+                        // Deschide fereastra de admin
                         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("admin-view.fxml"));
                         Parent root = fxmlLoader.load();
                         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
@@ -88,17 +95,15 @@ public class AdminLoginController {
                         scene.getStylesheets().add(css);
                         Platform.runLater(() -> scene.getRoot().requestFocus());
                         Stage stage = new Stage();
-                        stage.setTitle("Admin Menu");
+                        stage.setTitle("meniu din adminlogincontroller");
                         stage.setHeight(500);
                         stage.setWidth(500);
                         stage.setScene(scene);
                         stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.initOwner(stage.getOwner());
-                        stage.showAndWait();
+                        stage.show();
 
                         System.out.println(user);
                     } else {
-
                         showConfirmationMessage(Alert.AlertType.ERROR, "Error", "The account you are trying to log in with does not have admin role. \n Try another account or log in as an user");
                     }
                 }
@@ -109,8 +114,8 @@ public class AdminLoginController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
+
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
