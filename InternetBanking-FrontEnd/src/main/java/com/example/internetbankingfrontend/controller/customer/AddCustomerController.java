@@ -2,6 +2,7 @@ package com.example.internetbankingfrontend.controller.customer;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -18,12 +19,25 @@ public class AddCustomerController {
     private TextField CustomerLastName;
     @FXML
     private TextField CustomerPhoneNumber;
+
     @FXML
     public void initialize() {
         Platform.runLater(() -> CustomerUsername.getParent().requestFocus());
     }
+
     @FXML
-    public void AddCustomer(){
+    public void AddCustomer() {
+        // Verifică dacă toate câmpurile sunt completate
+        if (CustomerUsername.getText().isEmpty() ||
+                CustomerPassword.getText().isEmpty() ||
+                CustomerFirstName.getText().isEmpty() ||
+                CustomerLastName.getText().isEmpty() ||
+                CustomerPhoneNumber.getText().isEmpty()) {
+
+            showWarningMessage("Warning", "Please complete all fields.");
+            return;
+        }
+
         try {
             String inputCustomerUsername = CustomerUsername.getText();
             String inputCustomerPassword = CustomerPassword.getText();
@@ -38,8 +52,8 @@ public class AddCustomerController {
                     + "\"lastname\": \"" + inputCustomerLastName + "\","
                     + "\"phoneNumber\": \"" + inputCustomerPhoneNumber + "\""
                     + "}";
-            URL url=new URL("http://localhost:8080/api/customer/");
-            HttpURLConnection con= (HttpURLConnection) url.openConnection();
+            URL url = new URL("http://localhost:8080/api/customer/");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -50,6 +64,7 @@ public class AddCustomerController {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
+
             int code = con.getResponseCode();
             if (code == HttpURLConnection.HTTP_OK || code == HttpURLConnection.HTTP_CREATED) {
                 System.out.println("Customer adăugat cu succes.");
@@ -57,9 +72,17 @@ public class AddCustomerController {
                 System.out.println("Eroare la adăugarea customer-ului: " + code);
             }
 
-
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // Metodă pentru afișarea mesajului de avertizare
+    private void showWarningMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
