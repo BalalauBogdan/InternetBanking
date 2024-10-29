@@ -30,6 +30,7 @@ public class AdminLoginController {
     public void loginAdmin(){
         String UsernameAdmin=adminUsername.getText();
         String PasswordAdmin=adminPassword.getText();
+
         if ("admin".equals(UsernameAdmin) && "admin".equals(PasswordAdmin)) {
             loggedIn=1;
             dialogStage.close();

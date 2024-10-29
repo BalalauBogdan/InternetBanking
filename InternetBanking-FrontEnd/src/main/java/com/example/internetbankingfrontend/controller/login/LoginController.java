@@ -85,6 +85,7 @@ public class LoginController {
                     String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
                     Scene scene = new Scene(root);
                     scene.getStylesheets().add(css);
+                    Platform.runLater(() -> scene.getRoot().requestFocus());
                     Stage stage = new Stage();
                     stage.setTitle("User Menu");
                     stage.setHeight(500);

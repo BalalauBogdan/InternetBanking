@@ -1,6 +1,7 @@
 package com.example.internetbankingfrontend.controller.admin;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ public class AdminController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Add Customer");
         stage.setHeight(500);
@@ -35,6 +37,7 @@ public class AdminController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Show Customer");
         stage.setHeight(700);
@@ -51,6 +54,7 @@ public class AdminController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Delete Customer");
         stage.setHeight(500);

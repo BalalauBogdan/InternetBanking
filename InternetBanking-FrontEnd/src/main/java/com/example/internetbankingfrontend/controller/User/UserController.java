@@ -2,6 +2,7 @@ package com.example.internetbankingfrontend.controller.User;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
 import com.example.internetbankingfrontend.controller.sold.ShowSoldController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +21,7 @@ public class UserController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Deposit Money");
         stage.setHeight(500);
@@ -36,6 +38,7 @@ public class UserController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Withdraw Money");
         stage.setHeight(500);
@@ -52,6 +55,7 @@ public class UserController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Transfer Money");
         stage.setHeight(500);
@@ -70,6 +74,7 @@ public class UserController {
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Sold");
         stage.setHeight(500);

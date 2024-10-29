@@ -15,7 +15,7 @@ VBox, HBox {
 .label{
     -fx-font-size: 12px;
 }
-.button:hover{
+.button:hover, .button:focused{
     -fx-background-color: #4A628A;
     -fx-text-fill: white;
 

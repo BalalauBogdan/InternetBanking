@@ -46,7 +46,7 @@ public class InternetBankingController {
             Scene scene = new Scene(root);
             String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
             scene.getStylesheets().add(css);
-
+            Platform.runLater(() -> scene.getRoot().requestFocus());
             Stage stage = new Stage();
             stage.setTitle("Admin login");
             stage.setHeight(500);

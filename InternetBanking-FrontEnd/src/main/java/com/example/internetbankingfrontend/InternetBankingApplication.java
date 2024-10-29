@@ -1,6 +1,7 @@
 package com.example.internetbankingfrontend;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,6 +17,7 @@ public class InternetBankingApplication extends Application {
         stage.setTitle("Main Page");
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
         scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         stage.setScene(scene);
         stage.show();
     }
