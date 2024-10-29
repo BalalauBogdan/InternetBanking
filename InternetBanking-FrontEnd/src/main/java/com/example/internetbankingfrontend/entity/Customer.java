@@ -11,6 +11,7 @@ public class Customer {
     private String phoneNumber;
     private double amount;
 
+
     public Customer(){}
     public Customer(Integer id, String iban, String role, String username, String password, String firstname, String lastname, String phoneNumber, double amount) {
         this.id = id;
