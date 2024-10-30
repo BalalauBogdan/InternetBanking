@@ -13,4 +13,7 @@ public interface CustomerService {
     Optional<Customer> findByUsername(String username);
     Customer updateCustomer(Customer customer);
     void deleteCustomer(Customer customer);
+    void addToSavingsAccount(String username, Double amount);
+    void withdrawFromSavingsAccount(String username, Double amount);
+    Double getSavingsAccountBalance(String username);
 }

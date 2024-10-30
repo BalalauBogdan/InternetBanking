@@ -7,6 +7,8 @@ import finalproject.internetbankingbackend.utils.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import finalproject.internetbankingbackend.exception.CustomerNotFoundException;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -194,5 +196,57 @@ public class CustomerController {
                 .data(null)
                 .build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
+
+    @PostMapping("/{username}/savings/add")
+    public ResponseEntity<ApiResponse> addToSavings(
+            @PathVariable String username,
+            @RequestParam Double amount) {
+        try {
+            customerService.addToSavingsAccount(username, amount);
+            return ResponseEntity.ok(new ApiResponse.Builder()
+                    .status(200)
+                    .message("Amount added to savings account successfully.")
+                    .build());
+        } catch (CustomerNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse.Builder().status(404).message(e.getMessage()).build());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ApiResponse.Builder().status(400).message(e.getMessage()).build());
+        }
+    }
+
+    @PostMapping("/{username}/savings/withdraw")
+    public ResponseEntity<ApiResponse> withdrawFromSavings(
+            @PathVariable String username,
+            @RequestParam Double amount) {
+        try {
+            customerService.withdrawFromSavingsAccount(username, amount);
+            return ResponseEntity.ok(new ApiResponse.Builder()
+                    .status(200)
+                    .message("Amount withdrawn from savings account successfully.")
+                    .build());
+        } catch (CustomerNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse.Builder().status(404).message(e.getMessage()).build());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ApiResponse.Builder().status(400).message(e.getMessage()).build());
+        }
+    }
+    @GetMapping("/{username}/savings/balance")
+    public ResponseEntity<ApiResponse> getSavingsBalance(@PathVariable String username) {
+        try {
+            Double balance = customerService.getSavingsAccountBalance(username);
+            return ResponseEntity.ok(new ApiResponse.Builder()
+                    .status(200)
+                    .message("Savings account balance retrieved successfully.")
+                    .data(balance)
+                    .build());
+        } catch (CustomerNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse.Builder().status(404).message(e.getMessage()).build());
+        }
     }
 }

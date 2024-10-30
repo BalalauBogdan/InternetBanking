@@ -1,5 +1,6 @@
 package finalproject.internetbankingbackend.service;
 
+import finalproject.internetbankingbackend.exception.CustomerNotFoundException;
 import finalproject.internetbankingbackend.entity.Customer;
 import finalproject.internetbankingbackend.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -58,4 +59,48 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(Customer customer) {
         this.customerRepository.delete(customer);
     }
+
+    @Override
+    public void addToSavingsAccount(String username, Double amount) {
+        Optional<Customer> optionalCustomer = customerRepository.findByUsername(username);
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            if (customer.getSold() >= amount) {
+                customer.setSold(customer.getSold() - amount);
+                customer.setSavingsAccount(customer.getSavingsAccount() + amount);
+                customerRepository.save(customer);
+            } else {
+                throw new IllegalArgumentException("Insufficient funds in main account.");
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer not found with username: " + username);
+        }
+    }
+
+    @Override
+    public void withdrawFromSavingsAccount(String username, Double amount) {
+        Optional<Customer> optionalCustomer = customerRepository.findByUsername(username);
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            if (customer.getSavingsAccount() >= amount) {
+                customer.setSavingsAccount(customer.getSavingsAccount() - amount);
+                customer.setSold(customer.getSold() + amount);
+                customerRepository.save(customer);
+            } else {
+                throw new IllegalArgumentException("Insufficient funds in savings account.");
+            }
+        } else {
+            throw new CustomerNotFoundException("Customer not found with username: " + username);
+        }
+    }
+    @Override
+    public Double getSavingsAccountBalance(String username) {
+        Optional<Customer> optionalCustomer = customerRepository.findByUsername(username);
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get().getSavingsAccount();
+        } else {
+            throw new CustomerNotFoundException("Customer not found with username: " + username);
+        }
+    }
+
 }
