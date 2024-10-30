@@ -4,7 +4,6 @@ VBox, HBox {
     -fx-spacing: 20px;
 }
 .button{
-    -fx-font-size: 12px;
     -fx-background-color: #7AB2D3;
     -fx-pref-height: 40px;
     -fx-pref-width: 180px;
@@ -40,6 +39,32 @@ VBox, HBox {
     -fx-font-weight: bold;
     -fx-pref-width: 100px;
     -fx-alignment: CENTER_RIGHT;
+
+}
+
+.tableacceptbutton{
+    -fx-pref-height: 15px;
+    -fx-pref-width: 80px;
+    -fx-background-color: #FAF7F0;
+    -fx-text-fill: black;
+}
+
+.tabledeclinebutton{
+    -fx-pref-height: 15px;
+    -fx-pref-width: 80px;
+    -fx-background-color: #FAF7F0;
+    -fx-text-fill: black;
+}
+
+.tableacceptbutton:hover, .tableacceptbutton:focused{
+    -fx-background-color: #65B741;
+    -fx-text-fill: white;
+
+}
+
+.tabledeclinebutton:hover, .tabledeclinebutton:focused{
+    -fx-background-color: #FF0000;
+    -fx-text-fill: white;
 
 }
 
