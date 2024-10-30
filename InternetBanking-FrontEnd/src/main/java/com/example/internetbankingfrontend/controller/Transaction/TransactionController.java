@@ -11,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
-
 public class TransactionController {
 
     @FXML
@@ -23,7 +22,7 @@ public class TransactionController {
     @FXML
     private TableColumn<Transaction, Double> amountColumn;
     @FXML
-    private TableColumn<Transaction, String> actionColumn;  // Modificat aici
+    private TableColumn<Transaction, Void> actionColumn;
 
     private ObservableList<Transaction> transactionList = FXCollections.observableArrayList();
 
@@ -34,14 +33,11 @@ public class TransactionController {
         recipientColumn.setCellValueFactory(new PropertyValueFactory<>("recipient"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
-
-
-
-        // Configurăm coloana acțiuni pentru a afișa butoanele Accept și Decline
+        // Configurăm coloana de acțiuni pentru a afișa butoanele Accept și Decline
         actionColumn.setCellFactory(column -> new TableCell<>() {
             private final Button acceptButton = new Button("Accept");
             private final Button declineButton = new Button("Decline");
-            private final HBox buttons = new HBox(acceptButton, declineButton);
+            private final HBox buttons = new HBox(5, acceptButton, declineButton); // Spacing de 5
 
             {
                 acceptButton.setOnAction(event -> {
@@ -52,11 +48,10 @@ public class TransactionController {
                     Transaction transaction = getTableView().getItems().get(getIndex());
                     handleDecline(transaction);
                 });
-                buttons.getChildren().addAll(acceptButton, declineButton);
             }
 
             @Override
-            protected void updateItem(String item, boolean empty) {
+            protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty) {
                     setGraphic(null);
@@ -66,8 +61,16 @@ public class TransactionController {
             }
         });
 
+        populateTableWithSampleData();
         // Adăugăm lista de tranzacții în tabel
         transactionTable.setItems(transactionList);
+    }
+    private void populateTableWithSampleData() {
+        // Adăugăm câteva tranzacții de probă
+        transactionList.addAll(
+                new Transaction("Alice", "Bob", 100.0),
+                new Transaction("Carol", "Dave", 200.5)
+        );
     }
 
     @FXML

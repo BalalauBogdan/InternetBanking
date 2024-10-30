@@ -40,7 +40,7 @@ public class AdminController {
         Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
         stage.setTitle("Show Customer");
-        stage.setHeight(700);
+        stage.setHeight(600);
         stage.setWidth(500);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);

@@ -3,7 +3,6 @@ VBox, HBox {
     -fx-alignment: center;
     -fx-spacing: 20px;
 }
-
 .button{
     -fx-font-size: 12px;
     -fx-background-color: #7AB2D3;
@@ -30,13 +29,18 @@ VBox, HBox {
 
 .findcustomerfield{
     -fx-background-color: #DFF2EB;
-    -fx-border-color: none;
-    -fx-alignment: center-left;
+    -fx-pref-width: 177px;
+    -fx-border-color: #7AB2D3;
+    -fx-alignment: CENTER-LEFT;
+    -fx-border-radius: 10px;
 
 }
 
 .findcustomerlabel{
     -fx-font-weight: bold;
+    -fx-pref-width: 100px;
+    -fx-alignment: CENTER_RIGHT;
+
 }
 
 .Hboxfindcustomer{
