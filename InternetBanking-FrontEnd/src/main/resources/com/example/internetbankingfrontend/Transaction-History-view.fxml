@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.internetbankingfrontend.controller.TransactionHistory.TransactionHistoryController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Pending Transactions"/>
+    <TableView fx:id="transactionTable">
+        <columns>
+            <!-- Coloana expeditor -->
+            <TableColumn fx:id="senderColumn" text="Expeditor">
+                <cellValueFactory>
+                    <PropertyValueFactory property="sender"/>
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Coloana destinatar -->
+            <TableColumn fx:id="recipientColumn" text="Destinatar">
+                <cellValueFactory>
+                    <PropertyValueFactory property="recipient"/>
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Coloana suma -->
+            <TableColumn fx:id="amountColumn" text="Suma">
+                <cellValueFactory>
+                    <PropertyValueFactory property="amount"/>
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Coloana acțiuni cu butoanele Accept și Decline -->
+            <TableColumn fx:id="statusColumn" text="Status">
+                <cellValueFactory>
+                    <PropertyValueFactory property="status"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>
