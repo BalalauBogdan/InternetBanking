@@ -101,4 +101,21 @@ public class UserController {
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
     }
+    @FXML
+    private void openSavingMenu() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("saving-menu-view.fxml"));
+        Parent root = fxmlLoader.load();
+        String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(css);
+        Platform.runLater(() -> scene.getRoot().requestFocus());
+        Stage stage = new Stage();
+        stage.setTitle("Savings Account");
+        stage.setHeight(500);
+        stage.setWidth(500);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(stage.getOwner());
+        stage.showAndWait();
+    }
 }

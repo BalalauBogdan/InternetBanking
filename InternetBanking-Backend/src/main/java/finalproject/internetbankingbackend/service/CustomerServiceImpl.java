@@ -58,4 +58,9 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomer(Customer customer) {
         this.customerRepository.delete(customer);
     }
+
+    @Override
+    public Optional<Customer> findByIban(String iban) {
+        return this.customerRepository.findByIban(iban);
+    }
 }

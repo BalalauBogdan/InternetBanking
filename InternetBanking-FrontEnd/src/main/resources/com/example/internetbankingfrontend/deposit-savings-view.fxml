@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.internetbankingfrontend.controller.savings.DepositSavingsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Enter the sum that you want to deposit"/>
+    <TextField fx:id="DepositSavingsSum" promptText="Enter the sum to deposit"/>
+    <Button text="Deposit" onAction="#DepositSavingsSumofMoney"/>
+</VBox>
