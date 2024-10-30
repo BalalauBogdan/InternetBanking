@@ -13,4 +13,5 @@ public interface CustomerService {
     Optional<Customer> findByUsername(String username);
     Customer updateCustomer(Customer customer);
     void deleteCustomer(Customer customer);
+    Optional<Customer> findByIban(String iban);
 }
