@@ -15,14 +15,8 @@ public class Transfer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "sender_id", nullable = false)
-    private Customer sender;
-
-    @ManyToOne
-    @JoinColumn(name = "receiver_id", nullable = false)
-    private Customer receiver;
-
+    private String senderIban;
+    private String receiverIban;
     private Double amount;
 
     @Enumerated(EnumType.STRING)

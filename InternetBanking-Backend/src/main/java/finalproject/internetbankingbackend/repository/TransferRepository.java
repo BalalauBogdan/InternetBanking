@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface TransferRepository extends JpaRepository<Transfer, Integer> {
-    @Query(value = "SELECT * FROM transfers WHERE receiver_id = :id", nativeQuery = true)
-    List<Transfer> getTransfersByReceiverId(@Param("id") Integer id);
+    List<Transfer> findAllByReceiverIban(String iban);
+
+    @Query(value = "SELECT * FROM transfers WHERE receiver_iban = :iban AND status = 'PENDING'", nativeQuery = true)
+    List<Transfer> findAllPendingTransfers(@Param("iban") String iban);
 }

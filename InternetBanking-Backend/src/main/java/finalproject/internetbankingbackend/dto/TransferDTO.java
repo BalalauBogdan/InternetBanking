@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TransferDTO {
-    private Integer senderId;
-    private String receiverIBAN;
+    private String senderIban;
+    private String receiverIban;
     private Double amount;
 }

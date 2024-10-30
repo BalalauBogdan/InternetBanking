@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,10 +22,4 @@ public class Customer {
     private String firstname;
     private String lastname;
     private String phoneNumber;
-
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
-    private List<Transfer> sentTransfers;
-
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
-    private List<Transfer> receivedTransfers;
 }
