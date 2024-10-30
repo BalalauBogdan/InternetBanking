@@ -76,6 +76,7 @@ public class LoginController {
                     user.setId(customer.getInt("id"));
                     user.setRole(customer.getString("role"));
                     user.setPhoneNumber(customer.getString("phoneNumber"));
+                    user.setIban(customer.getString("iban"));
 
 
 

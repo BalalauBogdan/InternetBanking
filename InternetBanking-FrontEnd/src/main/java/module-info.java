@@ -35,5 +35,4 @@ module com.example.internetbankingfrontend {
     opens com.example.internetbankingfrontend.controller.savings to javafx.fxml;
     exports com.example.internetbankingfrontend.controller.savings;
 
-
 }
