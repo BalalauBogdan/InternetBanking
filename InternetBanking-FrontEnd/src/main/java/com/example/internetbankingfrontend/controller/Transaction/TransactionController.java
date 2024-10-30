@@ -5,10 +5,7 @@ import com.example.internetbankingfrontend.entity.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -153,11 +150,111 @@ public class TransactionController {
 
     private void handleAccept(Transaction transaction) {
         System.out.println("Tranzacție acceptată: " + transaction);
-        // Logica de acceptare
+
+        try {
+            // Configurarea URL-ului de request cu ID-ul tranzacției
+            URL url = new URL("http://localhost:8080/api/transfer/accept/" + transaction.getId());
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+            // Procesarea răspunsului
+            int code = con.getResponseCode();
+
+            if (code == HttpURLConnection.HTTP_OK) {
+                // Răspunsul în caz de succes
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                    StringBuilder response = new StringBuilder();
+                    String responseLine;
+                    while ((responseLine = br.readLine()) != null) {
+                        response.append(responseLine.trim());
+                    }
+                    JSONObject jsonResponse = new JSONObject(response.toString());
+                    showConfirmationMessage(Alert.AlertType.INFORMATION, "Transfer Acceptat", jsonResponse.getString("message"));
+
+                    // Poți actualiza lista de tranzacții după acceptare, dacă este necesar
+                    transactionList.remove(transaction);
+                }
+            } else if (code == HttpURLConnection.HTTP_NOT_FOUND) {
+                // Răspunsurile 404 pentru cazurile de eroare specificate
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"))) {
+                    StringBuilder errorResponse = new StringBuilder();
+                    String responseLine;
+                    while ((responseLine = br.readLine()) != null) {
+                        errorResponse.append(responseLine.trim());
+                    }
+                    JSONObject jsonResponse = new JSONObject(errorResponse.toString());
+                    showConfirmationMessage(Alert.AlertType.WARNING, "Eroare Transfer", jsonResponse.getString("message"));
+                }
+            } else {
+                // Orice alt cod de eroare
+                showConfirmationMessage(Alert.AlertType.ERROR, "Eroare Transfer", "A apărut o eroare neașteptată. Cod eroare: " + code);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showConfirmationMessage(Alert.AlertType.ERROR, "Eroare Transfer", "A apărut o eroare internă: " + e.getMessage());
+        }
     }
+
+    private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     private void handleDecline(Transaction transaction) {
         System.out.println("Tranzacție refuzată: " + transaction);
-        // Logica de refuz
+
+        try {
+            // Configurarea URL-ului de request cu ID-ul tranzacției
+            URL url = new URL("http://localhost:8080/api/transfer/decline/" + transaction.getId());
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+            // Procesarea răspunsului
+            int code = con.getResponseCode();
+
+            if (code == HttpURLConnection.HTTP_OK) {
+                // Răspunsul în caz de succes
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                    StringBuilder response = new StringBuilder();
+                    String responseLine;
+                    while ((responseLine = br.readLine()) != null) {
+                        response.append(responseLine.trim());
+                    }
+                    JSONObject jsonResponse = new JSONObject(response.toString());
+                    showConfirmationMessage(Alert.AlertType.INFORMATION, "Transfer Refuzat", jsonResponse.getString("message"));
+
+                    // Elimină tranzacția din listă după refuz, dacă este necesar
+                    transactionList.remove(transaction);
+                }
+            } else if (code == HttpURLConnection.HTTP_NOT_FOUND) {
+                // Răspunsurile 404 pentru cazurile de eroare specificate
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"))) {
+                    StringBuilder errorResponse = new StringBuilder();
+                    String responseLine;
+                    while ((responseLine = br.readLine()) != null) {
+                        errorResponse.append(responseLine.trim());
+                    }
+                    JSONObject jsonResponse = new JSONObject(errorResponse.toString());
+                    showConfirmationMessage(Alert.AlertType.WARNING, "Eroare Transfer", jsonResponse.getString("message"));
+                }
+            } else {
+                // Orice alt cod de eroare
+                showConfirmationMessage(Alert.AlertType.ERROR, "Eroare Transfer", "A apărut o eroare neașteptată. Cod eroare: " + code);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showConfirmationMessage(Alert.AlertType.ERROR, "Eroare Transfer", "A apărut o eroare internă: " + e.getMessage());
+        }
     }
+
 }

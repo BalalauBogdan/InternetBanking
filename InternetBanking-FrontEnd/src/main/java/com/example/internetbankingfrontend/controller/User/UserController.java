@@ -85,7 +85,7 @@ public class UserController {
         stage.showAndWait();
     }
     @FXML
-    private void openTransaction() throws IOException{
+    private void openPendingTransaction() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("Transaction-view.fxml"));
         Parent root = fxmlLoader.load();
         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
@@ -93,7 +93,7 @@ public class UserController {
         scene.getStylesheets().add(css);
         Platform.runLater(() -> scene.getRoot().requestFocus());
         Stage stage = new Stage();
-        stage.setTitle("Transaction");
+        stage.setTitle("Pending Transactions");
         stage.setHeight(500);
         stage.setWidth(500);
         stage.setScene(scene);
