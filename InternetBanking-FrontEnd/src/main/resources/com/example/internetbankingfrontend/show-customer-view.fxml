@@ -13,26 +13,30 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <Label text="Introdu ID Customer"/>
-    <TextField fx:id="CustomerIDField" promptText="Customer ID"/>
+    <TextField fx:id="CustomerIDField" promptText="Customer ID "/>
     <Button text="Find Customer" onAction="#findCustomer"/>
     <HBox styleClass="Hboxfindcustomer">
-        <Label  styleClass="findcustomerlabel" fx:id="usernameLabel" text="Username:" visible="false"/>
+        <Label  styleClass="findcustomerlabel" fx:id="usernameLabel" text="Username: " visible="false"/>
         <TextField styleClass="findcustomerfield" fx:id="usernameField" visible="false" editable="false" />
     </HBox>
     <HBox styleClass="Hboxfindcustomer">
-        <Label styleClass="findcustomerlabel" fx:id="passwordLabel" text="Password:" visible="false"/>
+        <Label styleClass="findcustomerlabel" fx:id="passwordLabel" text="Password: " visible="false"/>
         <TextField  styleClass="findcustomerfield" fx:id="passwordField" visible="false" editable="false" />
     </HBox>
     <HBox styleClass="Hboxfindcustomer">
-        <Label styleClass="findcustomerlabel" fx:id="firstnameLabel" text="Firstname:" visible="false"/>
+        <Label styleClass="findcustomerlabel" fx:id="firstnameLabel" text="Firstname: " visible="false"/>
         <TextField styleClass="findcustomerfield" fx:id="firstnameField" visible="false" editable="false" />
     </HBox>
     <HBox styleClass="Hboxfindcustomer">
-        <Label styleClass="findcustomerlabel" fx:id="lastnameLabel" text="Lastname:" visible="false"/>
+        <Label styleClass="findcustomerlabel" fx:id="lastnameLabel" text="Lastname: " visible="false"/>
         <TextField styleClass="findcustomerfield" fx:id="lastnameField" visible="false" editable="false" />
     </HBox>
     <HBox styleClass="Hboxfindcustomer">
-        <Label styleClass="findcustomerlabel" fx:id="phonenumberLabel" text="Phone Number:" visible="false"/>
+        <Label styleClass="findcustomerlabel" fx:id="IbanLabel" text="IBAN: " visible="false"/>
+        <TextField styleClass="findcustomerfield" fx:id="IbanField" visible="false" editable="false"/>
+    </HBox>
+    <HBox styleClass="Hboxfindcustomer">
+        <Label styleClass="findcustomerlabel" fx:id="phonenumberLabel" text="Phone Number: " visible="false"/>
         <TextField styleClass="findcustomerfield" fx:id="phonenumberField" visible="false" editable="false" />
     </HBox>
 </VBox>
