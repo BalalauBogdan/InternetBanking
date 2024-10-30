@@ -41,6 +41,11 @@ public class ShowCustomerController {
     private Label phonenumberLabel;
 
     @FXML
+    private TextField IbanField;
+    @FXML
+    private Label IbanLabel;
+
+    @FXML
     public void initialize() {
         Platform.runLater(() -> CustomerIDField.getParent().requestFocus());
     }
@@ -80,6 +85,7 @@ public class ShowCustomerController {
             firstnameField.setText(customer.getString("firstname"));
             lastnameField.setText(customer.getString("lastname"));
             phonenumberField.setText(customer.getString("phoneNumber"));
+            IbanField.setText(customer.getString("iban"));
 
             usernameLabel.setVisible(true);
             usernameField.setVisible(true);
@@ -91,6 +97,8 @@ public class ShowCustomerController {
             lastnameField.setVisible(true);
             phonenumberLabel.setVisible(true);
             phonenumberField.setVisible(true);
+            IbanLabel.setVisible(true);
+            IbanField.setVisible(true);
         } else {
             showWarningMessage("Warning", "Customer ID not found. Please enter a valid ID.");
         }

@@ -87,7 +87,6 @@ public class AdminLoginController {
                         Stage currentStage = (Stage) adminUsername.getScene().getWindow();
                         currentStage.close();
 
-                        // Deschide fereastra de admin
                         FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("admin-view.fxml"));
                         Parent root = fxmlLoader.load();
                         String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
@@ -95,7 +94,7 @@ public class AdminLoginController {
                         scene.getStylesheets().add(css);
                         Platform.runLater(() -> scene.getRoot().requestFocus());
                         Stage stage = new Stage();
-                        stage.setTitle("meniu din adminlogincontroller");
+                        stage.setTitle("Admin menu");
                         stage.setHeight(500);
                         stage.setWidth(500);
                         stage.setScene(scene);
