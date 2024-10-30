@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.util.Callback?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.internetbankingfrontend.controller.Transaction.TransactionController">
     <padding>
@@ -17,32 +13,26 @@
     <Label text="Transactions History"/>
     <TableView fx:id="transactionTable">
         <columns>
-<!--        coloana expeditor-->
+            <!-- Coloana expeditor -->
             <TableColumn fx:id="senderColumn" text="Expeditor">
                 <cellValueFactory>
                     <PropertyValueFactory property="sender"/>
                 </cellValueFactory>
             </TableColumn>
-<!--        coloana destinatar-->
-            <TableColumn  fx:id="recipientColumn" text="Destinatar">
+            <!-- Coloana destinatar -->
+            <TableColumn fx:id="recipientColumn" text="Destinatar">
                 <cellValueFactory>
-                    <PropertyValueFactory property="recepient"/>
+                    <PropertyValueFactory property="recipient"/>
                 </cellValueFactory>
             </TableColumn>
-<!--        coloana suma-->
+            <!-- Coloana suma -->
             <TableColumn fx:id="amountColumn" text="Suma">
                 <cellValueFactory>
                     <PropertyValueFactory property="amount"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn  fx:id="actionColumn" text="Actiuni">
-<!--                <cellValueFactory>-->
-<!--                    <Callback>-->
-<!--                            <Button text="Accept" onAction="#handleAccept"/>-->
-<!--                            <Button text="Decline" onAction="#handleDecline"/>-->
-<!--                    </Callback>-->
-<!--                </cellValueFactory>-->
-            </TableColumn>
+            <!-- Coloana acțiuni cu butoanele Accept și Decline -->
+            <TableColumn fx:id="actionColumn" text="Acțiuni"/>
         </columns>
     </TableView>
 </VBox>
