@@ -9,7 +9,10 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+
+import java.util.Objects;
 
 public class TransactionController {
 
@@ -28,18 +31,45 @@ public class TransactionController {
 
     @FXML
     public void initialize() {
+
         // Setăm câmpurile pentru coloanele expeditor, destinatar și sumă
         senderColumn.setCellValueFactory(new PropertyValueFactory<>("sender"));
         recipientColumn.setCellValueFactory(new PropertyValueFactory<>("recipient"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        actionColumn.setPrefWidth(200);
 
         // Configurăm coloana de acțiuni pentru a afișa butoanele Accept și Decline
         actionColumn.setCellFactory(column -> new TableCell<>() {
             private final Button acceptButton = new Button("Accept");
             private final Button declineButton = new Button("Decline");
-            private final HBox buttons = new HBox(5, acceptButton, declineButton); // Spacing de 5
+            private final GridPane grid = new GridPane();// Spacing de 5
 
             {
+                acceptButton.setPrefWidth(50);
+                declineButton.setPrefWidth(50);
+                acceptButton.setPrefHeight(20);
+                declineButton.setPrefHeight(20);
+                grid.setHgap(0);
+                grid.setVgap(0);
+                grid.add(acceptButton, 0, 0); // Plasăm butonul Accept în prima coloană
+                grid.add(declineButton, 1, 0); // Plasăm butonul Decline în a doua coloană
+
+                // Aliniem GridPane la centrul celulei
+                grid.setAlignment(javafx.geometry.Pos.CENTER);
+                acceptButton.setStyle("  -fx-background-color: #DFF2EB; -fx-text-fill: black;");
+                acceptButton.setOnMouseEntered(event -> {
+                    acceptButton.setStyle("  -fx-background-color: #65B741; -fx-text-fill: white; -fx-font-weight: bold;"); // Culoare mai închisă
+                });
+                acceptButton.setOnMouseExited(event -> {
+                    acceptButton.setStyle("  -fx-background-color: #DFF2EB; -fx-text-fill: black; -fx-font-weight: bold;"); // Culoare inițială
+                });
+                declineButton.setStyle(" -fx-background-color: #DFF2EB; -fx-text-fill: black;");
+                declineButton.setOnMouseEntered(event -> {
+                    declineButton.setStyle("  -fx-background-color: #FF0000; -fx-text-fill: white; -fx-font-weight: bold;"); // Culoare mai închisă
+                });
+                declineButton.setOnMouseExited(event -> {
+                    declineButton.setStyle(" -fx-background-color: #DFF2EB; -fx-text-fill: black; -fx-font-weight: bold;"); // Culoare inițială
+                });
                 acceptButton.setOnAction(event -> {
                     Transaction transaction = getTableView().getItems().get(getIndex());
                     handleAccept(transaction);
@@ -56,7 +86,7 @@ public class TransactionController {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    setGraphic(buttons);
+                    setGraphic(grid);
                 }
             }
         });
