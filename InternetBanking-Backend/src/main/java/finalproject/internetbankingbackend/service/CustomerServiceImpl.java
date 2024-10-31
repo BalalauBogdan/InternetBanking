@@ -102,5 +102,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new CustomerNotFoundException("Customer not found with username: " + username);
         }
     }
-
+    public Optional<Customer> findByIban(String iban) {
+        return this.customerRepository.findByIban(iban);
+    }
 }

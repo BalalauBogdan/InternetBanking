@@ -13,7 +13,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <Label text="Transfer Money"/>
-    <TextField fx:id="TransferPerson" promptText="Enter IBAN of beneficiary account"/>
+    <TextField fx:id="TransferRecieverIban" promptText="Enter IBAN of beneficiary account"/>
     <TextField fx:id="TransferSum" promptText="Enter sum of money"/>
     <Button text="Transfer" onAction="#TransferSumofMoney"/>
 </VBox>

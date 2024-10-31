@@ -28,5 +28,13 @@ module com.example.internetbankingfrontend {
     exports com.example.internetbankingfrontend.controller.sold;
     opens com.example.internetbankingfrontend.controller.Transfer to javafx.fxml;
     exports com.example.internetbankingfrontend.controller.Transfer;
+    opens com.example.internetbankingfrontend.entity to javafx.fxml;
+    exports com.example.internetbankingfrontend.entity;
+    opens com.example.internetbankingfrontend.controller.Transaction to javafx.fxml;
+    exports com.example.internetbankingfrontend.controller.Transaction;
+    opens com.example.internetbankingfrontend.controller.savings to javafx.fxml;
+    exports com.example.internetbankingfrontend.controller.savings;
+    opens com.example.internetbankingfrontend.controller.TransactionHistory to javafx.fxml;
+    exports com.example.internetbankingfrontend.controller.TransactionHistory;
 
 }

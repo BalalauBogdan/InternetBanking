@@ -39,9 +39,9 @@ public class LoginController {
             String inputUsername = username.getText();
             String inputPassword = password.getText();
 
-            String jsonInputString = "{\"username\":\"" + inputUsername + "\",\"password\":\"" + inputPassword + "\"}";
-            URL url=new URL("http://localhost:8080/api/customer/login");
-            HttpURLConnection con= (HttpURLConnection) url.openConnection();
+                String jsonInputString = "{\"username\":\"" + inputUsername + "\",\"password\":\"" + inputPassword + "\"}";
+                URL url=new URL("http://localhost:8080/api/customer/login");
+                HttpURLConnection con= (HttpURLConnection) url.openConnection();
 
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -73,10 +73,10 @@ public class LoginController {
                     user.setPassword(customer.getString("password"));
                     user.setFirstname(customer.getString("firstname"));
                     user.setLastname(customer.getString("lastname"));
-                    user.setIban(customer.getString("iban"));
                     user.setId(customer.getInt("id"));
                     user.setRole(customer.getString("role"));
                     user.setPhoneNumber(customer.getString("phoneNumber"));
+                    user.setIban(customer.getString("iban"));
 
 
 
@@ -85,6 +85,7 @@ public class LoginController {
                     String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
                     Scene scene = new Scene(root);
                     scene.getStylesheets().add(css);
+                    Platform.runLater(() -> scene.getRoot().requestFocus());
                     Stage stage = new Stage();
                     stage.setTitle("User Menu");
                     stage.setHeight(500);

@@ -16,4 +16,5 @@ public interface CustomerService {
     void addToSavingsAccount(String username, Double amount);
     void withdrawFromSavingsAccount(String username, Double amount);
     Double getSavingsAccountBalance(String username);
+    Optional<Customer> findByIban(String iban);
 }
