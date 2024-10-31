@@ -5,7 +5,6 @@ import com.example.internetbankingfrontend.entity.Customer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.json.JSONObject;
@@ -91,6 +91,8 @@ public class LoginController {
                     stage.setHeight(500);
                     stage.setWidth(500);
                     stage.setScene(scene);
+                    javafx.scene.image.Image userIcon = new Image(getClass().getResourceAsStream("/Icons/user-icon.png"));
+                    stage.getIcons().add(userIcon);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.initOwner(stage.getOwner());
                     stage.showAndWait();
@@ -109,6 +111,8 @@ public class LoginController {
             System.out.println(e.getMessage());
             this.showConfirmationMessage(Alert.AlertType.ERROR,"Error","Please fill in all the fields");
         }
+        username.setText("");
+        password.setText("");
 
     }
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {

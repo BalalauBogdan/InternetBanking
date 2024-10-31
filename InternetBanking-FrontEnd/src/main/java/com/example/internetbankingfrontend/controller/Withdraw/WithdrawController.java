@@ -74,7 +74,7 @@ public class WithdrawController {
             System.out.println(e.getMessage());
             this.showConfirmationMessage(Alert.AlertType.ERROR, "Error", "Please fill in all the fields");
         }
-
+        WithdrawSum.setText("");
     }
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

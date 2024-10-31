@@ -77,6 +77,7 @@ public class DepositController {
             System.out.println(e.getMessage());
             this.showConfirmationMessage(Alert.AlertType.ERROR, "Error", "Please fill in all the fields");
         }
+        DepositSum.setText("");
     }
 
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {

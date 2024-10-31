@@ -59,6 +59,12 @@ public class RegisterController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        RegisterUsername.setText("");
+        RegisterPassword.setText("");
+        RegisterConfirmPassword.setText("");
+        RegisterFirstName.setText("");
+        RegisterLastName.setText("");
+        RegisterPhoneNumber.setText("");
     }
 
     private boolean isInputValid(String username, String password, String confirmPassword, String firstName, String lastName, String phoneNumber) {

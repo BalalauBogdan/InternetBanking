@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -28,6 +29,8 @@ public class InternetBankingController {
             stage.setHeight(350);
             stage.setWidth(500);
             stage.setScene(scene);
+            Image loginIcon = new Image(getClass().getResourceAsStream("/Icons/login-icon.png"));
+            stage.getIcons().add(loginIcon);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
             stage.showAndWait();

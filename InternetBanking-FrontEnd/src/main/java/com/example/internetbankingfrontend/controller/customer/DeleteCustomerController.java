@@ -45,6 +45,7 @@ public class DeleteCustomerController {
                     e.printStackTrace();
                     return null;
                 });
+        CustomerUsername.setText("");
     }
 
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {

@@ -14,25 +14,25 @@
     <TableView fx:id="transactionTable">
         <columns>
             <!-- Coloana expeditor -->
-            <TableColumn fx:id="senderColumn" text="Expeditor">
+            <TableColumn fx:id="senderColumn" text="Sender">
                 <cellValueFactory>
                     <PropertyValueFactory property="sender"/>
                 </cellValueFactory>
             </TableColumn>
             <!-- Coloana destinatar -->
-            <TableColumn fx:id="recipientColumn" text="Destinatar">
+            <TableColumn fx:id="recipientColumn" text="Recipient">
                 <cellValueFactory>
                     <PropertyValueFactory property="recipient"/>
                 </cellValueFactory>
             </TableColumn>
             <!-- Coloana suma -->
-            <TableColumn fx:id="amountColumn" text="Suma">
+            <TableColumn fx:id="amountColumn" text="Amount">
                 <cellValueFactory>
                     <PropertyValueFactory property="amount"/>
                 </cellValueFactory>
             </TableColumn>
             <!-- Coloana acțiuni cu butoanele Accept și Decline -->
-            <TableColumn fx:id="actionColumn" text="Acțiuni"/>
+            <TableColumn fx:id="actionColumn" text="Actions"/>
         </columns>
     </TableView>
 </VBox>

@@ -12,9 +12,9 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label text="Meniu admin"/>
-    <Button text="Adauga client" onAction="#openAddCustomer"/>
-    <Button text="Afiseaza client" onAction="#openShowCustomerByID"/>
-    <Button text="Sterge client" onAction="#openDeleteCustomerByUsername"/>
+    <Label text="Admin Menu"/>
+    <Button text="Add Customer" onAction="#openAddCustomer"/>
+    <Button text="Find Customer" onAction="#openShowCustomerByID"/>
+    <Button text="Delete Customer" onAction="#openDeleteCustomerByUsername"/>
 
 </VBox>

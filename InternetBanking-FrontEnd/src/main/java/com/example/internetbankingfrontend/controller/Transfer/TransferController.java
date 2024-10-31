@@ -91,6 +91,8 @@ public class TransferController {
             e.printStackTrace();
             this.showConfirmationMessage(Alert.AlertType.ERROR, "Transfer Error", "A apărut o eroare internă: " + e.getMessage());
         }
+        TransferRecieverIban.setText("");
+        TransferSum.setText("");
     }
 
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {

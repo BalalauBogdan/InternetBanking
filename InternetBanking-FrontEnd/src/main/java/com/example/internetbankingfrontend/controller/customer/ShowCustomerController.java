@@ -102,6 +102,7 @@ public class ShowCustomerController {
         } else {
             showWarningMessage("Warning", "Customer ID not found. Please enter a valid ID.");
         }
+        CustomerIDField.setText("");
     }
 
     private void showWarningMessage(String title, String message) {

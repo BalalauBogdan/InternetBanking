@@ -113,6 +113,8 @@ public class AdminLoginController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        adminUsername.setText("");
+        adminPassword.setText("");
     }
 
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {

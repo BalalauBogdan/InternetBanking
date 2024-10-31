@@ -75,6 +75,11 @@ public class AddCustomerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        CustomerFirstName.setText("");
+        CustomerLastName.setText("");
+        CustomerPhoneNumber.setText("");
+        CustomerUsername.setText("");
+        CustomerPassword.setText("");
     }
 
     // Metodă pentru afișarea mesajului de avertizare
