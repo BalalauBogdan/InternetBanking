@@ -95,7 +95,7 @@ public class UserController {
         Stage stage = new Stage();
         stage.setTitle("Pending Transactions");
         stage.setHeight(500);
-        stage.setWidth(500);
+        stage.setWidth(700);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());

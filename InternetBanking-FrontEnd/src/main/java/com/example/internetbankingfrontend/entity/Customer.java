@@ -10,10 +10,10 @@ public class Customer {
     private String lastname;
     private String phoneNumber;
     private double amount;
-
+    private double savingsSold;
 
     public Customer(){}
-    public Customer(Integer id, String iban, String role, String username, String password, String firstname, String lastname, String phoneNumber, double amount) {
+    public Customer(Integer id, String iban, String role, String username, String password, String firstname, String lastname, String phoneNumber, double amount, double savingsSold) {
         this.id = id;
         this.iban = iban;
         this.role = role;
@@ -23,6 +23,15 @@ public class Customer {
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
         this.amount=amount;
+        this.savingsSold=savingsSold;
+    }
+
+    public double getSavingsSold() {
+        return savingsSold;
+    }
+
+    public void setSavingsSold(double savingsSold) {
+        this.savingsSold = savingsSold;
     }
 
     public double getAmount() {
@@ -110,4 +119,6 @@ public class Customer {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+
 }
