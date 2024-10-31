@@ -54,6 +54,8 @@ public class InternetBankingController {
             stage.setHeight(500);
             stage.setWidth(500);
             stage.setScene(scene);
+            Image adminIcon = new Image(getClass().getResourceAsStream("/Icons/admin-icon.png"));
+            stage.getIcons().add(adminIcon);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
 

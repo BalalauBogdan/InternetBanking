@@ -55,6 +55,7 @@ public class DepositSavingsController {
             e.printStackTrace();
             showConfirmationMessage(Alert.AlertType.ERROR, "Error", "An error occurred while making the deposit.");
         }
+        DepositSavingsSum.setText("");
     }
 
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {

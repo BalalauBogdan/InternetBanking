@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -29,6 +30,8 @@ public class SavingMenuController {
         stage.setHeight(500);
         stage.setWidth(500);
         stage.setScene(scene);
+        Image piggybankIcon = new Image(getClass().getResourceAsStream("/Icons/piggy-bank-icon.png"));
+        stage.getIcons().add(piggybankIcon);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -46,6 +49,8 @@ public class SavingMenuController {
         stage.setHeight(500);
         stage.setWidth(500);
         stage.setScene(scene);
+        Image depositmoneyIcon = new Image(getClass().getResourceAsStream("/Icons/deposit-money-icon.png"));
+        stage.getIcons().add(depositmoneyIcon);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -63,6 +68,8 @@ public class SavingMenuController {
         stage.setHeight(500);
         stage.setWidth(500);
         stage.setScene(scene);
+        Image withdrawmoneyIcon = new Image(getClass().getResourceAsStream("/Icons/withdraw-money-icon.png"));
+        stage.getIcons().add(withdrawmoneyIcon);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();

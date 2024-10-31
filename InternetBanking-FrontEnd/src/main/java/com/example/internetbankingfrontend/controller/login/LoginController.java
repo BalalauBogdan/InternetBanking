@@ -133,6 +133,8 @@ public class LoginController {
             stage.setHeight(500);
             stage.setWidth(500);
             stage.setScene(scene);
+            Image registerIcon = new Image(getClass().getResourceAsStream("/Icons/add-customer-icon.png"));
+            stage.getIcons().add(registerIcon);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(stage.getOwner());
             stage.showAndWait();

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,6 +27,8 @@ public class AdminController {
         stage.setHeight(500);
         stage.setWidth(500);
         stage.setScene(scene);
+        Image addcustomerIcon = new Image(getClass().getResourceAsStream("/Icons/add-customer-icon.png"));
+        stage.getIcons().add(addcustomerIcon);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -43,6 +46,8 @@ public class AdminController {
         stage.setHeight(600);
         stage.setWidth(500);
         stage.setScene(scene);
+        Image findcustomerIcon = new Image(getClass().getResourceAsStream("/Icons/find-customer-icon.png"));
+        stage.getIcons().add(findcustomerIcon);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();
@@ -60,6 +65,8 @@ public class AdminController {
         stage.setHeight(500);
         stage.setWidth(500);
         stage.setScene(scene);
+        Image deleteuserIcon = new Image(getClass().getResourceAsStream("/Icons/delete-user-icon.png"));
+        stage.getIcons().add(deleteuserIcon);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(stage.getOwner());
         stage.showAndWait();

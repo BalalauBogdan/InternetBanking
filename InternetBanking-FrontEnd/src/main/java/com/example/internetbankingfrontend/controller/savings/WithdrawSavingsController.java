@@ -54,6 +54,7 @@ public class WithdrawSavingsController {
             e.printStackTrace();
             showConfirmationMessage(Alert.AlertType.ERROR, "Error", "An error occurred while making the deposit.");
         }
+        withdrawSavingsSumField.setText("");
     }
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

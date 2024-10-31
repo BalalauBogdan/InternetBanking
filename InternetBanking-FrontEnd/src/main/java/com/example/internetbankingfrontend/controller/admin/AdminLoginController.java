@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -98,6 +99,8 @@ public class AdminLoginController {
                         stage.setHeight(500);
                         stage.setWidth(500);
                         stage.setScene(scene);
+                        Image adminIcon = new Image(getClass().getResourceAsStream("/Icons/admin-icon.png"));
+                        stage.getIcons().add(adminIcon);
                         stage.initModality(Modality.APPLICATION_MODAL);
                         stage.show();
 
