@@ -48,7 +48,7 @@ public class DepositSavingsController {
                 }
             } else {
                 System.out.println("Eroare la efectuarea depozitului: " + code);
-                showConfirmationMessage(Alert.AlertType.ERROR, "Error", "Failed to deposit. HTTP code: " + code);
+                showConfirmationMessage(Alert.AlertType.ERROR, "Error", "Insufficient funds");
             }
 
         } catch (Exception e) {

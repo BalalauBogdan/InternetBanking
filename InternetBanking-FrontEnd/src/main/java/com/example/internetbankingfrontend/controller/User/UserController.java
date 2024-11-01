@@ -1,7 +1,9 @@
 package com.example.internetbankingfrontend.controller.User;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
+import com.example.internetbankingfrontend.controller.login.LoginController;
 import com.example.internetbankingfrontend.controller.sold.ShowSoldController;
+import com.example.internetbankingfrontend.entity.Customer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
-
 public class UserController {
     @FXML
     private void openDepositMoney() throws IOException{
@@ -142,7 +143,7 @@ public class UserController {
         Stage stage = new Stage();
         stage.setTitle("Transactions History");
         stage.setHeight(500);
-        stage.setWidth(500);
+        stage.setWidth(600);
         stage.setScene(scene);
         Image historyIcon = new Image(getClass().getResourceAsStream("/Icons/transaction-history-icon.png"));
         stage.getIcons().add(historyIcon);

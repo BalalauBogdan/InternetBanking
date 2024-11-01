@@ -1,6 +1,7 @@
 package com.example.internetbankingfrontend.controller.login;
 
 import com.example.internetbankingfrontend.InternetBankingApplication;
+import com.example.internetbankingfrontend.controller.User.UserController;
 import com.example.internetbankingfrontend.entity.Customer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -83,6 +84,7 @@ public class LoginController {
                     FXMLLoader fxmlLoader = new FXMLLoader(InternetBankingApplication.class.getResource("User-view.fxml"));
                     Parent root = fxmlLoader.load();
                     String css = Objects.requireNonNull(getClass().getResource("/style/style.css")).toExternalForm();
+
                     Scene scene = new Scene(root);
                     scene.getStylesheets().add(css);
                     Platform.runLater(() -> scene.getRoot().requestFocus());
@@ -115,6 +117,7 @@ public class LoginController {
         password.setText("");
 
     }
+
     private void showConfirmationMessage(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
